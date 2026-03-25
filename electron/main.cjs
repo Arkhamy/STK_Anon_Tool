@@ -11,9 +11,10 @@ function createWindow() {
     height: Math.min(900, height),
     icon: path.join(__dirname, '../public/logo.png'),
     webPreferences: {
-      nodeIntegration: true,
-      contextIsolation: false,
-      webSecurity: false 
+      preload: path.join(__dirname, 'preload.js'),
+      nodeIntegration: false,
+      contextIsolation: true,
+      webSecurity: true 
     },
     autoHideMenuBar: true,
   });
@@ -21,7 +22,7 @@ function createWindow() {
   // Load the React app
   // Development: localhost
   // Production: built index.html
-  if (process.env.NODE_ENV === 'development') {
+  if (!app.isPackaged) {
     mainWindow.loadURL('http://localhost:5173');
   } else {
     mainWindow.loadFile(path.join(__dirname, '../dist/index.html'));

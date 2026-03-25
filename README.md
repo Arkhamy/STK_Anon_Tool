@@ -1,90 +1,120 @@
-# **STK Anon - Privacy Engineering Tool**
+# STK Anon Tool - Outil d'Anonymisation de Documents
 
-STK Anon est une application de bureau sécurisée (Windows) conçue pour l'anonymisation, le marquage et la protection de documents sensibles avant leur diffusion.
-Contrairement aux outils en ligne, STK Anon fonctionne 100% hors-ligne. Aucun document ne quitte votre machine.
+![Logo STK Anon](public/logo.png)
 
-## 🚀 Fonctionnalités Clés
+**STK Anon Tool** est une application de bureau open-source conçue pour vous aider à protéger votre vie privée en nettoyant, filigranant et anonymisant vos documents (images et PDF) avant de les partager.
 
-### 🛡️ Confidentialité Totale :
-Traitement local (Local-First). Vos fichiers ne sont jamais uploadés sur un cloud.
+[![Version](https://img.shields.io/badge/version-1.8.0-blue.svg)](https://semver.org)
+[![Licence](https://img.shields.io/badge/licence-MIT-green.svg)](LICENSE)
 
-### 📄 Support Multi-Formats :
-Prise en charge native des images (JPG, PNG) et des documents PDF multipages.
+---
 
-### 👁️ Caviardage (Redaction) :
-Masquez les zones sensibles (noms, visages, données) avec des rectangles noirs irréversibles.
+## Table des matières
 
-### ©️ Filigrane (Watermarking) : 
-Appliquez des filigranes personnalisés (texte, densité, rotation, opacité) pour prévenir les fuites.
+- [À propos du projet](#à-propos-du-projet)
+- [Fonctionnalités clés](#fonctionnalités-clés)
+- [Technologies utilisées](#technologies-utilisées)
+- [Démarrage rapide](#démarrage-rapide)
+- [Utilisation](#utilisation)
+- [Comment contribuer](#comment-contribuer)
+- [Licence](#licence)
 
-### 🔍 Inspection de Métadonnées : 
-Visualisez les données cachées (EXIF, Auteur PDF, Logiciel créateur) avant de partager.
+---
 
-### 💾 Export Haute Qualité : 
-Recomposition des PDF et images en haute définition après modification.
+## À propos du projet
 
-### 📸 Aperçu de l'interface
+Dans un monde où le partage d'informations est constant, il est crucial de maîtriser les données que l'on expose. STK Anon Tool a été créé pour offrir une solution simple, rapide et locale (rien n'est envoyé sur des serveurs externes) pour "nettoyer" des documents. Que vous soyez un journaliste souhaitant protéger ses sources, un avocat partageant des pièces sensibles, ou simplement un citoyen soucieux de sa vie privée, cet outil est fait pour vous.
 
-Tableau de bord principal
+![Aperçu de l'application](https://i.imgur.com/your-screenshot-placeholder.png)
+*(Remplacez cette image par une capture d'écran de l'application)*
 
-<img width="1266" height="893" alt="Screenshot 2026-01-31 132554" src="https://github.com/user-attachments/assets/e3cc02d4-eae3-4b97-b44b-07e6328bfb91" />
+---
 
-<img width="1266" height="893" alt="Screenshot 2026-01-31 132812" src="https://github.com/user-attachments/assets/461ecca1-de4e-4146-93af-5facfc09bd6d" />
+## Fonctionnalités clés
 
-Édition de PDF et Filigrane
+-   🧹 **Nettoyage des Métadonnées**: Supprimez les données EXIF et autres informations cachées de vos fichiers (coordonnées GPS, type d'appareil, date de création, etc.).
+-   💧 **Ajout de Filigrane (Watermarking)**: Apposez un texte personnalisé sur vos documents pour marquer la confidentialité, la provenance ou le statut d'un document. Le filigrane est entièrement configurable (taille, opacité, couleur, rotation, densité).
+-   ✒️ **Anonymisation (Caviardage)**: Masquez de manière permanente des zones spécifiques de vos documents (noms, adresses, visages, etc.) en dessinant des rectangles noirs.
+-   📄 **Support Multi-format**: Traite aussi bien les images (JPG, PNG) que les documents PDF, y compris les PDF de plusieurs pages.
+-   🔒 **100% Local**: Toutes les opérations sont effectuées sur votre machine. Vos fichiers ne la quittent jamais.
 
-<img width="1313" height="1018" alt="Screenshot 2026-01-31 132909" src="https://github.com/user-attachments/assets/6f169fb9-e9b5-44fd-839a-a801b37d5120" />
+---
 
-<img width="1313" height="787" alt="Screenshot 2026-01-31 133036" src="https://github.com/user-attachments/assets/182198b5-5b55-44ae-9049-6a9937454228" />
+## Technologies utilisées
 
+Ce projet est construit avec des technologies modernes et robustes :
 
-## 🛠️ Installation
+-   [Electron](https://www.electronjs.org/) - Pour la création de l'application de bureau multiplateforme.
+-   [React](https://reactjs.org/) - Pour la construction de l'interface utilisateur.
+-   [Vite](https://vitejs.dev/) - Pour un environnement de développement rapide et un build optimisé.
+-   [Tailwind CSS](https://tailwindcss.com/) - Pour le design de l'interface.
 
-Pour les utilisateurs (Windows)
+---
 
-Allez dans la section Releases (colonne de droite).
+## Démarrage rapide
 
-Téléchargez le fichier STK Anon Setup x.x.x.exe de la dernière version.
+Pour faire fonctionner ce projet en local, suivez ces étapes.
 
-https://github.com/Arkhamy/stk_anon_tool/releases/download/v1.7.0/STK.Anon.Setup.1.7.0.exe
+### Prérequis
 
-Lancez l'installation (l'application se lancera automatiquement).
+Assurez-vous d'avoir [Node.js](https://nodejs.org/) (version 18 ou supérieure) et npm installés sur votre système.
 
+### Installation
 
-## Pour les développeurs (Build from source)
+1.  Clonez ce dépôt (ou téléchargez les fichiers) sur votre machine.
+2.  Ouvrez un terminal à la racine du projet.
+3.  Installez les dépendances nécessaires avec la commande :
+    ```sh
+    npm install
+    ```
 
-Pré-requis : Node.js (v18+) et Git.
+### Lancement
 
-### 1. Cloner le dépôt
-git clone [https://github.com/Arkhamy/stk-anon-tool.git](https://github.com/VOTRE_PSEUDO/stk-anon-tool.git)
-cd stk-anon-tool
+Vous pouvez lancer l'application de deux manières :
 
-### 2. Installer les dépendances
-npm install
+1.  **En mode développement web (interface uniquement) :**
+    ```sh
+    npm run dev
+    ```
+    Cela ouvrira l'interface dans votre navigateur à l'adresse `http://localhost:5173`.
 
-### 3. Lancer en mode développement
-npm run electron:dev
+2.  **En mode application de bureau (Electron) :**
+    ```sh
+    npm run electron:dev
+    ```
+    Cela lancera l'application de bureau complète avec toutes ses fonctionnalités.
 
-### 4. Compiler pour la production
-npm run electron:build
+---
 
+## Utilisation
 
-## 🔒 Sécurité & Technique
+1.  Lancez l'application.
+2.  Depuis l'écran d'accueil (Tutoriel), cliquez sur le bouton **Téléverser**.
+3.  Choisissez un fichier image (JPG, PNG) ou un PDF sur votre ordinateur.
+4.  Utilisez la **Tool Box** sur la gauche pour naviguer entre les différents outils :
+    -   **Métadonnées** : Inspectez les informations du fichier.
+    -   **Filigrane** : Configurez et prévisualisez un filigrane.
+    -   **Anonymisation** : Dessinez des zones à masquer.
+5.  Une fois vos modifications terminées, cliquez sur le bouton **ENREGISTRER** pour sauvegarder une copie sécurisée de votre document.
 
-Cette application est construite sur une stack moderne et auditée :
+---
 
-Electron : Pour l'encapsulation système sécurisée.
+## Comment contribuer
 
-React + Vite : Pour la performance de l'interface.
+Les contributions sont ce qui fait de la communauté open source un endroit extraordinaire pour apprendre, inspirer et créer. Toute contribution que vous faites est **grandement appréciée**.
 
-PDF.js & jsPDF : Pour le traitement de documents sans dépendances externes.
+Si vous avez une suggestion pour améliorer ce projet, veuillez forker le dépôt et créer une pull request. Vous pouvez aussi simplement ouvrir une "issue" avec le tag "enhancement".
+N'oubliez pas de donner une étoile au projet ! Merci encore !
 
-## ⚠️ Avertissement
+1.  Forkez le Projet
+2.  Créez votre branche de fonctionnalité (`git checkout -b feature/AmazingFeature`)
+3.  Commitez vos changements (`git commit -m 'Add some AmazingFeature'`)
+4.  Poussez vers la branche (`git push origin feature/AmazingFeature`)
+5.  Ouvrez une Pull Request
 
-Cet outil est fourni pour aider à la protection de la vie privée. L'utilisateur est responsable de vérifier que les documents caviardés ne contiennent plus d'informations sensibles avant diffusion.
+---
 
-<<<<<<< HEAD
-Développé par STK - v1.7.0
-=======
-Développé par STK - v1.7.0
->>>>>>> 88843af8fe3ce122886c6e437c6b9e06dd56ba76
+## Licence
+
+Distribué sous la licence MIT. Voir `LICENSE.txt` pour plus d'informations.
+*(Vous devrez ajouter un fichier LICENSE.txt avec le contenu de la licence MIT)*
