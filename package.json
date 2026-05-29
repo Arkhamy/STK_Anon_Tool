@@ -11,7 +11,9 @@
     "build": "vite build",
     "preview": "vite preview",
     "electron:dev": "concurrently \"vite\" \"wait-on tcp:5173 && electron .\"",
-    "electron:build": "vite build && electron-builder"
+    "electron:build": "vite build && electron-builder",
+    "audit:security": "npm audit --audit-level=moderate",
+    "sbom": "npx @cyclonedx/cyclonedx-npm --output-file sbom.json --output-format JSON"
   },
   "build": {
     "appId": "com.sentrykat.stkanon",
@@ -24,6 +26,11 @@
     "directories": {
       "output": "release"
     },
+    "publish": {
+      "provider": "github",
+      "owner": "Arkhamy",
+      "repo": "stk_anon_tool"
+    },
     "win": {
       "target": "nsis",
       "icon": "public/logo.png"
@@ -34,32 +41,38 @@
       "createDesktopShortcut": true
     },
     "linux": {
-      "target": "deb",
+      "target": [
+        "deb",
+        "AppImage"
+      ],
       "icon": "public/logo.png",
       "category": "Utility",
       "maintainer": "SentryKat <contact@sentrykat.com>"
     }
   },
   "dependencies": {
+    "electron-updater": "^6.8.3",
+    "jspdf": "^4.2.1",
     "lucide-react": "^0.344.0",
+    "pdfjs-dist": "^5.7.284",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
-    "@vitejs/plugin-react": "^4.7.0",
+    "@vitejs/plugin-react": "^6.0.2",
     "autoprefixer": "^10.4.19",
     "concurrently": "^8.2.2",
-    "electron": "^29.4.6",
-    "electron-builder": "^24.13.3",
+    "electron": "^42.2.0",
+    "electron-builder": "^26.8.1",
     "eslint": "^8.57.0",
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.1",
-    "vite": "^5.4.21",
+    "vite": "^8.0.14",
     "wait-on": "^7.2.0"
   }
 }

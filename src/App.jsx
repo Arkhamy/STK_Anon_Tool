@@ -1,27 +1,16 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { BookOpen, EyeOff, Download, Upload, Type, Eraser, FileText, X, Image as ImageIcon, File, ChevronLeft, ChevronRight, MapPin, User, Cpu, ShieldOff } from 'lucide-react';
 import WelcomeScreen from './WelcomeScreen';
+import * as pdfjsLib from 'pdfjs-dist';
+import { jsPDF } from 'jspdf';
+import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.min.mjs?url';
+
+pdfjsLib.GlobalWorkerOptions.workerSrc = pdfjsWorker;
 
 /**
  * STK Anon - PROTECTION DE LA VIE PRIVÉE
  * Version 1.8.0
  */
-
-// --- SYSTEM UTILITIES ---
-
-const loadScript = (src) => {
-  return new Promise((resolve, reject) => {
-    if (document.querySelector(`script[src="${src}"]`)) {
-      resolve();
-      return;
-    }
-    const script = document.createElement('script');
-    script.src = src;
-    script.onload = resolve;
-    script.onerror = reject;
-    document.head.appendChild(script);
-  });
-};
 
 // --- UI COMPONENTS ---
 
@@ -167,13 +156,8 @@ export default function App() {
     setIsProcessing(true);
     setProgressText("Analyse du PDF...");
     try {
-        if (!window.pdfjsLib) {
-            await loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js');
-            window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-        }
-        
         const uri = URL.createObjectURL(fileData);
-        const loadingTask = window.pdfjsLib.getDocument(uri);
+        const loadingTask = pdfjsLib.getDocument(uri);
         const pdf = await loadingTask.promise;
         
         setPdfDoc(pdf);
@@ -415,8 +399,6 @@ export default function App() {
         const finalCtx = finalCanvas.getContext('2d');
 
         if (isPdf && pdfDoc) {
-            if (!window.jspdf) await loadScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js');
-            const { jsPDF } = window.jspdf;
             const doc = new jsPDF({ unit: 'px' });
             doc.deletePage(1); 
 
