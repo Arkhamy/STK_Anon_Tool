@@ -13,7 +13,7 @@ Always use the latest release available on [GitHub Releases](https://github.com/
 
 **Do not open a public GitHub issue for security vulnerabilities.**
 
-Report vulnerabilities privately to: **y.chareyre@gmail.com**
+Report vulnerabilities privately to: **security@sentrykat.fr**
 
 Include:
 - Description of the vulnerability
